@@ -7,7 +7,7 @@ import Projects from './components/Projects';
 import Contact from './components/Contact';
 import DarkModeToggle from './components/DarkModeToggle';
 import ParallaxSection from './components/ParallaxSection';
-import Testimonials from './components/Testimonials';
+// import Testimonials from './components/Testimonials';
 import Loading from './components/Loading';
 import './index.css';
 
@@ -30,7 +30,7 @@ function App() {
       <About />
       <Skills />
       <Projects />
-      <Testimonials />
+      {/* <Testimonials /> */}
       <Contact />
     </div>
   );

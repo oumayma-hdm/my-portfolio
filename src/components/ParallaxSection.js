@@ -6,7 +6,7 @@ const ParallaxSection = () => (
   <Parallax bgImage={BackgroundImage} strength={500}>
     <div style={{ height: 500 }}>
       <div className="flex justify-center items-center h-full">
-        <h1 className="text-6xl text-white text-shadow">Welcome to My Portfolio</h1>
+        <h1 className="text-6xl text-white text-shadow">Hello this is Oumayma's Space</h1>
       </div>
     </div>
   </Parallax>

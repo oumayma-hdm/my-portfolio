@@ -21,7 +21,7 @@ const testimonials = [
 const Testimonials = () => (
   <section id="testimonials" className="py-20 bg-gray-900 text-white">
     <div className="container mx-auto">
-      <h2 className="text-4xl mb-6 text-center">Testimonials</h2>
+      <h2 className="text-4xl mb-6 text-center"> Testimonials</h2>
       <div className="flex flex-wrap justify-center">
         {testimonials.map((testimonial, index) => (
           <div key={index} className="bg-gray-800 p-6 rounded-lg shadow-lg m-4 w-full md:w-1/3">
