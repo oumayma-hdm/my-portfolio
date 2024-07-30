@@ -1,14 +1,15 @@
 import React from 'react';
-import { Link } from 'react-scroll'; // Import Link from react-scroll for smooth scrolling
+import { Link } from 'react-scroll';
+import { FaLaptopCode } from 'react-icons/fa';
 
 const Navbar = () => {
   return (
-    <nav className="bg-gradient-to-r from-purple-500 to-pink-500 p-4 fixed w-full z-10 shadow-lg">
+    <nav className="bg-gradient-to-r from-purple-900 to-blue-300 p-4 fixed w-full z-10 shadow-lg">
       <div className="container mx-auto flex justify-between items-center">
-        <div className="text-white text-2xl font-bold cursor-pointer">
-          {/* Logo or Site Name */}
+        <div className="text-white text-2xl font-bold cursor-pointer flex items-center space-x-2">
+          <FaLaptopCode size={28} />
           <Link to="home" smooth={true} duration={500}>
-            MyPortfolio
+            Hi Dev
           </Link>
         </div>
         <div className="flex space-x-4">
