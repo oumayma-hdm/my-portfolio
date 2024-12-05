@@ -1,34 +1,134 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { FaLinkedin, FaGithub, FaEnvelope } from 'react-icons/fa';
+import emailjs from 'emailjs-com';
+
+const ContactItem = ({ icon, text, link }) => (
+  <div className="group flex items-center gap-4 p-2 rounded-md hover:bg-zinc-800/50 transition-colors">
+    {icon}
+    <a href={link} className="text-zinc-300 group-hover:text-green-500 transition-colors">{text}</a>
+  </div>
+);
 
 const Contact = () => {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    message: '',
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault(); // Prevent the default form submission behavior
+
+    // Send email using EmailJS
+    emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', formData, 'YOUR_USER_ID')
+      .then((response) => {
+        console.log('Email sent successfully!', response.status, response.text);
+        // Reset the form after submission
+        setFormData({ name: '', email: '', message: '' });
+      })
+      .catch((error) => {
+        console.error('Error sending email:', error);
+      });
+  };
+
   return (
-    <section id="contact" className="py-20 bg-gray-900 text-white">
+    <section id="contact" className="py-20 bg-black text-white">
       <div className="container mx-auto text-center">
         <h2 className="text-4xl mb-6">Contact</h2>
         <p className="mb-8">Connect with me and let's build great things:</p>
-        <div className="flex justify-center space-x-6">
-          <a
-            href="https://www.linkedin.com/in/oumayma-el-haddam"   
-            className="text-purple-400 hover:text-purple-600 transition duration-300"
-            aria-label="LinkedIn"
+        
+        <form className="max-w-lg mx-auto space-y-4" onSubmit={handleSubmit}>
+          <input
+            type="text"
+            name="name"
+            placeholder="Your Name"
+            className="w-full p-2 rounded bg-gray-800 text-white"
+            value={formData.name}
+            onChange={handleChange}
+            required
+          />
+          <input
+            type="email"
+            name="email"
+            placeholder="Your Email"
+            className="w-full p-2 rounded bg-gray-800 text-white"
+            value={formData.email}
+            onChange={handleChange}
+            required
+          />
+          <textarea
+            name="message"
+            placeholder="Your Message"
+            className="w-full p-2 rounded bg-gray-800 text-white"
+            rows="4"
+            value={formData.message}
+            onChange={handleChange}
+            required
+          ></textarea>
+          <button
+            type="submit"
+            className="w-full p-2 bg-purple-500 text-white rounded hover:bg-purple-600 transition duration-300"
           >
-            <FaLinkedin size={40} />
-          </a>
-          <a
-            href="https://github.com/oumayma-hdm"
-            className="text-purple-400 hover:text-purple-600 transition duration-300"
-            aria-label="GitHub"
-          >
-            <FaGithub size={40} />
-          </a>
-          <a
-            href="mailto:oumayma.elhaddam@gmail.com"
-            className="text-purple-400 hover:text-purple-600 transition duration-300"
-            aria-label="Email"
-          >
-            <FaEnvelope size={40} />
-          </a>
+            Send Message
+          </button>
+        </form>
+
+        <div className="p-4 opacity-100 transform-none">
+          <div className="space-y-6">
+            <div className="space-y-4">
+              <ContactItem 
+                icon={<FaEnvelope className="text-zinc-400 group-hover:text-green-500 transition-colors" size={24} />}
+                text="oumayma.elhaddam@gmail.com"
+                link="mailto:oumayma.elhaddam@gmail.com"
+              />
+              <ContactItem 
+                icon={<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-phone text-zinc-400 group-hover:text-green-500 transition-colors"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>}
+                text="+212 682873516"
+                link="tel:+212 682873516"
+              />
+              <ContactItem 
+                icon={<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-map-pin text-zinc-400 transition-colors"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"></path><circle cx="12" cy="10" r="3"></circle></svg>}
+                text="Fes, Morocco"
+                link="#"
+              />
+            </div>
+            <div className="pt-4 border-t border-zinc-800">
+              <div className="space-y-4">
+                <ContactItem 
+                  icon={<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-github text-zinc-400 group-hover:text-green-500 transition-colors"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path><path d="M9 18c-4.51 2-5-2-7-2"></path></svg>}
+                  text="github.com/oumayma-hdm"
+                  link="https://github.com/oumayma-hdma"
+                />
+                <ContactItem 
+                  icon={<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-linkedin text-zinc-400 group-hover:text-green-500 transition-colors"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect width="4" height="12" x="2" y="9"></rect><circle cx="4" cy="4" r="2"></circle></svg>}
+                  text="linkedin.com/in/oumayma-el-haddam/"
+                  link="https://www.linkedin.com/in/oumayma-el-haddam/"
+                />
+                <ContactItem 
+                  icon={<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-code-xml text-zinc-400 group-hover:text-green-500 transition-colors"><path d="m18 16 4-4-4-4"></path><path d="m6 8-4 4 4 4"></path><path d="m14.5 4-5 16"></path></svg>}
+                  text="leetcode.com/u/oumaymahdm/"
+                  link="https://leetcode.com/u/oumaymahdm/"
+                />
+              </div>
+            </div>
+            <div className="pt-4 border-t border-zinc-800">
+              <div className="flex items-center gap-3 p-2">
+                <div className="relative">
+                  <div className="w-3 h-3 rounded-full bg-green-500"></div>
+                  <div className="absolute inset-0 w-3 h-3 rounded-full bg-green-500 animate-ping"></div>
+                </div>
+                <span className="text-zinc-300">Available for new opportunities</span>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>

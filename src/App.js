@@ -26,11 +26,10 @@ function App() {
       <Navbar />
       <DarkModeToggle />
       <ParallaxSection />
-      <Home />
       <About />
       <Skills />
       <Projects />
-      {/* <Testimonials /> */}
+      <Home />
       <Contact />
     </div>
   );

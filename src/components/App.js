@@ -11,7 +11,9 @@ function App() {
   return (
     <div>
       <Navbar />
-      <Home />
+      <div style={{ height: '100vh' }}> {/* Full height for Home section */}
+        <Home />
+      </div>
       <About />
       <Skills />
       <Projects />

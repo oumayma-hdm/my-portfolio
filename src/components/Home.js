@@ -3,7 +3,7 @@ import BackgroundImage from '../assets/image.png'; // Update with the correct pa
 
 const Home = () => {
     return (
-      <section id="home" className="h-screen flex items-center justify-center bg-gray-900 text-white">
+      <section id="home" className="h-screen flex items-center justify-center bg-black text-white">
         <div className="container mx-auto flex flex-col md:flex-row items-center justify-center">
           <div className="md:w-1/2 p-6">
           <a href="https://www.linkedin.com/in/oumayma-el-haddam/" target="_blank" >
@@ -11,10 +11,9 @@ const Home = () => {
             </a>
           </div>
           <div className="md:w-1/2 p-6 text-center md:text-left">
-            <div className="bg-black bg-opacity-50 p-10 rounded-lg">
-              <h1 className="text-6xl mb-4 text-white animate-fade-in">Welcome to My Portfolio</h1>
-              <p className="text-2xl text-white animate-slide-in">A creative space for innovation and analytical thinking</p>
-            </div>
+          <div className="text-center mt-10">
+          <p className="text-lg text-white">If you liked what you see, feel free to contact me!</p>
+        </div>
           </div>
         </div>
       </section>

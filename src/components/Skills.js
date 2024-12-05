@@ -1,66 +1,52 @@
 import React from 'react';
+import {
+  FaReact,
+  FaPhp,
+  FaDocker,
+  FaHtml5,
+  FaCss3Alt,
+  FaJs,
+} from "react-icons/fa";
+import {
+  SiDrupal,
+  SiNextdotjs,
+  SiMysql,
+  SiUbuntu,
+  SiVisualstudiocode,
+  SiTailwindcss,
+} from "react-icons/si";
+
+const skillsData = [
+  { icon: <FaReact size={50} className="text-purple-500 group-hover:text-purple-700" />, name: 'React' },
+  { icon: <FaPhp size={50} className="text-blue-600 group-hover:text-blue-800" />, name: 'PHP' },
+  { icon: <SiDrupal size={50} className="text-blue-600 group-hover:text-blue-800" />, name: 'Drupal' },
+  { icon: <SiNextdotjs size={50} className="text-grey-500 group-hover:text-gray-800" />, name: 'Next.js' },
+  { icon: <SiMysql size={50} className="text-blue-600 group-hover:text-blue-800" />, name: 'MySQL' },
+  { icon: <FaDocker size={50} className="text-blue-500 group-hover:text-blue-700" />, name: 'Docker' },
+  { icon: <SiUbuntu size={50} className="text-orange-500 group-hover:text-orange-700" />, name: 'Ubuntu' },
+  { icon: <FaHtml5 size={50} className="text-orange-500 group-hover:text-orange-700" />, name: 'HTML5' },
+  { icon: <FaCss3Alt size={50} className="text-blue-500 group-hover:text-blue-700" />, name: 'CSS3' },
+  { icon: <FaJs size={50} className="text-yellow-500 group-hover:text-yellow-700" />, name: 'JavaScript' },
+  { icon: <SiVisualstudiocode size={50} className="text-blue-500 group-hover:text-blue-700" />, name: 'VS Code' },
+  { icon: <SiTailwindcss size={50} className="text-teal-400 group-hover:text-teal-600" />, name: 'Tailwind CSS' },
+];
 
 const Skills = () => {
   return (
-    <section id="skills" className="py-20 bg-gray-900 text-white">
-      <div className="container mx-auto">
-        <h2 className="text-4xl mb-6 text-center">Skills</h2>
-        <ul className="flex flex-wrap justify-center">
-          <li className="m-4">
-            <div className="bg-blue-700 p-6 rounded-lg shadow-lg hover:shadow-xl transition duration-300">
-              <h3 className="text-2xl text-white mb-2">Web Development</h3>
-              <p className="text-white">PHP, Drupal (CMS), React/Next.js, Docker, LAMP/MAMP Stack</p>
+    <section id="skills" className="py-20 bg-black text-white">
+      <div className="bg-black py-4">
+        <div className="container mx-auto flex justify-center flex-wrap px-4">
+          {skillsData.map((skill, index) => (
+            <div key={index} className="relative group flex items-center m-4">
+              <div className="flex justify-center items-center">
+                {skill.icon}
+              </div>
+              <span className="absolute bottom-full mb-1 left-1/2 transform -translate-x-1/2 text-sm text-white bg-gray-800 rounded-lg p-1 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+                {skill.name}
+              </span>
             </div>
-          </li>
-          <li className="m-4">
-            <div className="bg-green-700 p-6 rounded-lg shadow-lg hover:shadow-xl transition duration-300">
-              <h3 className="text-2xl text-white mb-2">Frontend Development</h3>
-              <p className="text-white">React, Tailwind, HTML, CSS</p>
-            </div>
-          </li>
-          <li className="m-4">
-            <div className="bg-purple-700 p-6 rounded-lg shadow-lg hover:shadow-xl transition duration-300">
-              <h3 className="text-2xl text-white mb-2">Deployment</h3>
-              <p className="text-white">Capistrano, Docker</p>
-            </div>
-          </li>
-          <li className="m-4">
-            <div className="bg-pink-700 p-6 rounded-lg shadow-lg hover:shadow-xl transition duration-300">
-              <h3 className="text-2xl text-white mb-2">Programming</h3>
-              <p className="text-white">Bash scripting, C/C++, HTML, Twig, JavaScript/CSS, PHP</p>
-            </div>
-          </li>
-          <li className="m-4">
-            <div className="bg-yellow-700 p-6 rounded-lg shadow-lg hover:shadow-xl transition duration-300">
-              <h3 className="text-2xl text-white mb-2">Databases</h3>
-              <p className="text-white">MySQL</p>
-            </div>
-          </li>
-          <li className="m-4">
-            <div className="bg-teal-700 p-6 rounded-lg shadow-lg hover:shadow-xl transition duration-300">
-              <h3 className="text-2xl text-white mb-2">Cloud</h3>
-              <p className="text-white">AWS</p>
-            </div>
-          </li>
-          <li className="m-4">
-            <div className="bg-indigo-700 p-6 rounded-lg shadow-lg hover:shadow-xl transition duration-300">
-              <h3 className="text-2xl text-white mb-2">Operating Systems</h3>
-              <p className="text-white">Windows, Linux, Ubuntu, Mac</p>
-            </div>
-          </li>
-          <li className="m-4">
-            <div className="bg-red-700 p-6 rounded-lg shadow-lg hover:shadow-xl transition duration-300">
-              <h3 className="text-2xl text-white mb-2">Methods & Design</h3>
-              <p className="text-white">Agile, Merise</p>
-            </div>
-          </li>
-          <li className="m-4">
-            <div className="bg-orange-700 p-6 rounded-lg shadow-lg hover:shadow-xl transition duration-300">
-              <h3 className="text-2xl text-white mb-2">Languages</h3>
-              <p className="text-white">French, English, Arabic</p>
-            </div>
-          </li>
-        </ul>
+          ))}
+        </div>
       </div>
     </section>
   );
