@@ -1,25 +1,32 @@
-import React from 'react';
+// @ts-nocheck
+'use client';
+import React, { useEffect, useRef } from 'react';
 import { FaReact, FaPhp, FaDocker, FaHtml5, FaCss3Alt, FaJs, FaEnvelope } from 'react-icons/fa'; // Import the email icon
 import { SiDrupal, SiNextdotjs, SiMysql, SiUbuntu, SiVisualstudiocode, SiTailwindcss, SiTwig } from 'react-icons/si';
+import CharacterCursor from './CharacterCursor'; // Import the CharacterCursor component
 
 const ParallaxSection = () => {
-  const scrollToSkills = () => {
-    const skillsSection = document.getElementById('skills');
-    if (skillsSection) {
-      skillsSection.scrollIntoView({ behavior: 'smooth' });
+  const scrollToAbout = () => {
+    const aboutSection = document.getElementById('about');
+    if (aboutSection) {
+      aboutSection.scrollIntoView({ behavior: 'smooth' });
+    } else {
+      console.warn('About section not found');
     }
   };
+
 
   return (
     <div className="relative bg-black">
       <div className="absolute inset-0 bg-gradient-to-br from-green-500/5 via-transparent to-purple-500/5"></div>
       <div style={{ height: '500px' }} className="relative z-10">
         <div className="flex flex-col justify-center items-center h-full px-4">
+          <div className="my-20"></div>
           <p className="text-gray-400 text-sm text-center">👋 Welcome to my portfolio</p>
           
           <h1 className="text-white text-4xl md:text-5xl lg:text-6xl">
             Hi, <span className="text-purple-500">I'm</span> Oumayma El Haddam
-          </h1>
+          </h1><CharacterCursor />
           <div className="w-16 h-1 bg-purple-500 mt-2" />
           <p className="text-gray-400 text-sm text-center mt-1">
             I'm a <span className="text-purple-500">Software Engineer</span> specializing in full-stack development and cloud architecture, passionate about <span className="text-purple-500">building elegant solutions to complex problems.</span> 
@@ -31,7 +38,7 @@ const ParallaxSection = () => {
               <FaEnvelope className="mr-2" /> {/* Email icon */}
               Get in Touch
             </a>
-            <a href="/path/to/resume.pdf" className="flex items-center bg-purple-500 text-white px-4 py-2 rounded hover:bg-purple-700 transition duration-300">
+            <a href="https://drive.google.com/file/d/1i8J4EjMXt4qNT9R0RVGU645gY0_aoFaL/view?usp=sharing" className="flex items-center bg-purple-500 text-white px-4 py-2 rounded hover:bg-purple-700 transition duration-300">
               <div className="w-4 h-1 bg-purple-500 mr-2" /> 
               Download Resume
             </a>
@@ -66,12 +73,12 @@ const ParallaxSection = () => {
               </svg>
             </a>
           </div>
-          <div className="flex flex-col items-center gap-2 mt-12">
-        <span className="text-sm text-zinc-400">Scroll to explore</span>
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-chevron-down w-5 h-5 text-green-500">
-          <path d="m6 9 6 6 6-6"></path>
-        </svg>
-      </div>
+          <div onClick={scrollToAbout} className="flex flex-col items-center gap-2 mt-12 cursor-pointer">
+            <span className="text-sm text-zinc-400">Scroll to explore</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-chevron-down w-5 h-5 text-green-500">
+              <path d="m6 9 6 6 6-6"></path>
+            </svg>
+          </div>
         </div>
       </div>
     </div>
